@@ -31,8 +31,6 @@ modules:
   # Integrates NVIDIA-OPEN Drivers
   - type: akmods
     base: main
-    install:
-      - nvidia
     nvidia-driver: nvidia-open
   # Configures default flatpaks
   - type: default-flatpaks
