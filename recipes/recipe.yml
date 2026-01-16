@@ -31,6 +31,7 @@ modules:
   # Integrates NVIDIA-OPEN Drivers
   - type: akmods
     base: main
+    install: # This is required but we don't want anything other than NVIDIA but that uses nvidia-driver
     nvidia-driver: nvidia-open
   # Configures default flatpaks
   - type: default-flatpaks
