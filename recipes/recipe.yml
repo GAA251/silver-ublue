@@ -32,6 +32,12 @@ modules:
   - type: akmods
     base: main
     nvidia-driver: nvidia-open
+  - type: kargs
+    kargs:
+      - nvidia-drm.modeset=1 # (ujust -n configure-nvidia)
+      # https://rpmfusion.org/Howto/NVIDIA#OSTree_.28Silverblue.2FKinoite.2Fetc.29
+      - rd.driver.blacklist=nouveau,nova_core
+      - modprobe.blacklist=nouveau,nova_core
   # Configures default flatpaks
   - type: default-flatpaks
     configurations:
