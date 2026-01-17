@@ -19,14 +19,15 @@ modules:
       packages:
         - nvidia-settings # NVIDIA X Server Settings (X11 is not available in GNOME)
         - nvidia-libXNVCtrl # NVIDIA X Server Settings dependency.
-  
   # Installs zapret, a DPI bypass tool.
   # more info @ https://github.com/bol-van/zapret/blob/master/docs/readme.en.md
   - type: dnf
     repos:
-      - https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
+      files:
+        - https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
     install:
-      - zapret
+      packages:
+        - zapret
   # Enables UUPD (Universal Update)
   # Normally this is supposed to be provided by bling (https://blue-build.org/reference/modules/bling/)
   # but it isn't (for now). So we install it through recipe.yml, then configure it here.
