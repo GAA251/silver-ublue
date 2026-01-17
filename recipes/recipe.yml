@@ -9,6 +9,11 @@ base-image: ghcr.io/ublue-os/silverblue-main
 image-version: latest
 
 modules:
+  # Integrates NVIDIA-OPEN Drivers
+  - type: akmods
+    base: main
+    install: [] # This is required but we don't want anything other than NVIDIA but that uses nvidia-driver
+    nvidia-driver: nvidia-open
   # Configures Default Packages from DNF
   - type: dnf
     repos:
@@ -28,17 +33,14 @@ modules:
         - gnome-tour
         - yelp
         - ublue-os-update-services
+        - nvidia-settings # NVIDIA X Server Settings (X11 is not available in GNOME)
+        - nvidia-libXNVCtrl # NVIDIA X Server Settings dependency.
   # Enables UUPD (Universal Update)
   # Normally this is supposed to be provided by bling (https://blue-build.org/reference/modules/bling/)
   # but it isn't (for now). So we install it through recipe.yml, then configure it here.
   - type: script
     scripts:
       - EnableUUPD.sh
-  # Integrates NVIDIA-OPEN Drivers
-  - type: akmods
-    base: main
-    install: [] # This is required but we don't want anything other than NVIDIA but that uses nvidia-driver
-    nvidia-driver: nvidia-open
   # Configures default flatpaks
   - type: default-flatpaks
     configurations:
@@ -71,6 +73,7 @@ modules:
     scripts:
       - PrepareForFirstUse.sh
   # Enables Numpad on boot during disk encryption process (Plymouth)
+  # Make sure this is last before signing because it's recommended to put initramfs that way.
   - type: files
     files:
       - source: dracut-numlock
