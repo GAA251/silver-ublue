@@ -7,7 +7,7 @@ set -oue pipefail
 OS_RELEASE_FILE="/usr/lib/os-release"
 VARIANT=$(grep '^VARIANT=' "$OS_RELEASE_FILE" | cut -d'=' -f2 | tr -d '"')
 VERSION_ID=$(grep '^VERSION_ID=' "$OS_RELEASE_FILE" | cut -d'=' -f2 | tr -d '"')
-OSTREE_VERSION=$(grep '^OSTREE_VERSION=' "$OS_RELEASE_FILE" | cut -d'=' -f2 | tr -d '"')
+OSTREE_VERSION=$(grep '^OSTREE_VERSION=' "$OS_RELEASE_FILE" | cut -d'=' -f2 | tr -d "'")
 
 # Update PRETTY_NAME and add/edit IMAGE_VERSION
 sed -i.bak "s/^PRETTY_NAME=.*/PRETTY_NAME=\"Fedora Linux $VERSION_ID ($VARIANT)\"/" "$OS_RELEASE_FILE"
