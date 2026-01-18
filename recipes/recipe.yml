@@ -9,7 +9,7 @@ base-image: ghcr.io/ublue-os/silverblue-main
 image-version: latest
 
 modules:
-  # Updates /etc/os-release (The manifest that defines what version the OS is)
+  # Updates the os-release file (The manifest that defines what version the OS is)
   - type: script
     scripts:
       - UpdateOSRelease.sh
