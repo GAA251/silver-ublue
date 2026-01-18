@@ -13,37 +13,6 @@ modules:
   - type: script
     scripts:
       - UpdateOSRelease.sh
-  # Integrates NVIDIA-OPEN Drivers
-  - type: akmods
-    base: main
-    install: [] # This is required but we don't want anything other than NVIDIA but that uses nvidia-driver
-    nvidia-driver: nvidia-open
-  - type: dnf
-    remove:
-      packages:
-        - nvidia-settings # NVIDIA X Server Settings (X11 is not available in GNOME)
-        - nvidia-libXNVCtrl # NVIDIA X Server Settings dependency.
-  # Installs zapret, a DPI bypass tool.
-  # more info @ https://github.com/bol-van/zapret/blob/master/docs/readme.en.md
-  - type: dnf
-    repos:
-      files:
-        - https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
-    install:
-      packages:
-        - zapret
-  - type: files
-    files:
-      - source: zapret
-        destination: /etc/zapret
-  - type: script
-    scripts:
-      - EnableZapret.sh
-  # Configures DNS-over-TLS for secure connections
-  - type: files
-    files:
-      - source: resolved.conf.d
-        destination: /etc/systemd/resolved.conf.d
   # Enables UUPD (Universal Update)
   # Normally this is supposed to be provided by bling (https://blue-build.org/reference/modules/bling/)
   # but it isn't (for now). So we install it through recipe.yml, then configure it here.
@@ -60,6 +29,37 @@ modules:
   - type: script
     scripts:
       - EnableUUPD.sh
+  # Integrates NVIDIA-OPEN Drivers
+  - type: akmods
+    base: main
+    install: [] # This is required but we don't want anything other than NVIDIA but that uses nvidia-driver
+    nvidia-driver: nvidia-open
+  - type: dnf
+    remove:
+      packages:
+        - nvidia-settings # NVIDIA X Server Settings (X11 is not available in GNOME)
+        - nvidia-libXNVCtrl # NVIDIA X Server Settings dependency.
+  # Configures DNS-over-TLS for secure connections
+  - type: files
+    files:
+      - source: resolved.conf.d
+        destination: /etc/systemd/resolved.conf.d
+  # Installs zapret, a DPI bypass tool.
+  # more info @ https://github.com/bol-van/zapret/blob/master/docs/readme.en.md
+  - type: dnf
+    repos:
+      files:
+        - https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
+    install:
+      packages:
+        - zapret
+  - type: files
+    files:
+      - source: zapret
+        destination: /etc/zapret
+  - type: script
+    scripts:
+      - EnableZapret.sh
   # Configures Inbox apps that are shipped with the image
   - type: dnf
     install:
@@ -85,6 +85,7 @@ modules:
         repo:
           title: Flathub (System)
         install: # system flatpaks we want all users to have and not remove
+          - io.github.kolunmi.Bazaar # Bazaar App Store (in favor of gnome-software)
           - com.github.tchx84.Flatseal
           - org.gnome.Calculator
           - org.gnome.Calendar
@@ -99,7 +100,6 @@ modules:
           - org.gnome.baobab # Disk Usage Analyzer
           - org.gnome.clocks
           - org.gnome.font-viewer
-          - io.github.kolunmi.Bazaar # Bazaar App Store (in favor of gnome-software)
   # Configures GNOME with gschema overrides @ files/gschema-overrides/*
   - type: gschema-overrides
   # Runs a "Prepare for First Use" script before the image is packaged and signed.
@@ -107,11 +107,11 @@ modules:
     scripts:
       - PrepareForFirstUse.sh
   # Enables Numpad on boot during disk encryption process (Plymouth)
-  # Make sure this is last before signing because it's recommended to put initramfs that way.
+  # MAKE SURE THIS IS LAST BEFORE SIGNING because it's recommended to put the initramfs module that way.
   - type: files
     files:
       - source: dracut-numlock
         destination: /usr/lib/dracut/modules.d/50numlock
   - type: initramfs
-  # Configure image signing and security policy - REQIRED
+  # Configure image signing and security policy - REQUIRED
   - type: signing
