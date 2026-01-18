@@ -32,6 +32,9 @@ modules:
     files:
       - source: zapret
         destination: /etc/zapret
+  - type: script
+    scripts:
+      - EnableZapret.sh
   # Configures DNS-over-TLS for secure connections
   - type: files
     files:
