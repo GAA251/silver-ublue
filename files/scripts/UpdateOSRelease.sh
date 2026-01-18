@@ -9,9 +9,9 @@ VARIANT=$(grep '^VARIANT=' "$OS_RELEASE_FILE" | cut -d'=' -f2 | tr -d '"')
 VERSION_ID=$(grep '^VERSION_ID=' "$OS_RELEASE_FILE" | cut -d'=' -f2 | tr -d '"')
 OSTREE_VERSION=$(grep '^OSTREE_VERSION=' "$OS_RELEASE_FILE" | cut -d'=' -f2 | tr -d '"')
 
-# Update PRETTY_NAME and add/edit BUILD_ID
+# Update PRETTY_NAME and add/edit IMAGE_VERSION
 sed -i.bak "s/^PRETTY_NAME=.*/PRETTY_NAME=\"Fedora Linux $VERSION_ID ($VARIANT)\"/" "$OS_RELEASE_FILE"
-# Add BUILD_ID if it doesn't exist, or update it if it does
+# Add IMAGE_VERSION if it doesn't exist, or update it if it does
 if grep -q '^IMAGE_VERSION=' "$OS_RELEASE_FILE"; then
   sed -i "s/^IMAGE_VERSION=.*/IMAGE_VERSION=\"$OSTREE_VERSION\"/" "$OS_RELEASE_FILE"
 else
