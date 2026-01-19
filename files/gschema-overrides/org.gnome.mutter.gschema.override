@@ -1,4 +1,4 @@
-[org.gnome.mutter]
+[org.gnome.mutter:GNOME]
 # Make GNOME center all new windows
 center-new-windows=true
 # Enable experimental features for VRR etc. (https://github.com/ublue-os/bazzite/blob/main/system_files/desktop/silverblue/usr/share/glib-2.0/schemas/zz0-00-bazzite-desktop-silverblue-global.gschema.override#L19)
