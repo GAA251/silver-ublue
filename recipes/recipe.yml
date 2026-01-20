@@ -116,6 +116,8 @@ modules:
           - org.gnome.baobab # Disk Usage Analyzer
           - org.gnome.clocks
           #- org.gnome.font-viewer
+          - org.gtk.Gtk3theme.adw-gtk3 # Libadwaita theme for gtk3 apps
+          - org.gtk.Gtk3theme.adw-gtk3-dark # Libadwaita theme for gtk3 apps
   # Runs a "Prepare for First Use" script before the image is packaged and signed.
   - type: script
     scripts:
