@@ -5,3 +5,7 @@ tap-to-click=true
 # Enable numpad on startup
 [org.gnome.desktop.peripherals.keyboard]
 numlock-state=true
+
+# Libadwaita theme for gtk3 apps
+[org.gnome.desktop.interface]
+gtk-theme="adw-gtk3"
