@@ -1,3 +1,7 @@
+**ACTIONS**
+**---------------**
+- rechunking to save space when updating?
+
 MAIN RECIPE
 ---------------
 - preload nvidia in initramfs?
