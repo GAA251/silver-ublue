@@ -12,7 +12,7 @@ VERSION_ID=$(grep '^VERSION_ID=' "$OS_RELEASE_FILE" | cut -d'=' -f2 | tr -d '"')
 # Use OSTREE_VERSION in the OS Build field in gnome-settings 
 #OS_BUILD=$(grep '^OSTREE_VERSION=' "$OS_RELEASE_FILE" | cut -d'=' -f2 | tr -d "'")
 # Use the date and time of build in the OS Build field in gnome-settings
-OS_BUILD=$(date +"%d/%m/%Y %H:%M")
+OS_BUILD=$(date +"%d/%m/%Y %H:%M %Z")
 
 
 # Set NAME to Fedora Linux
