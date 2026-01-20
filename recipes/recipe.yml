@@ -78,6 +78,8 @@ modules:
     install:
       - 2236 # Night Theme Switcher
       - 615 # AppIndicator and KStatusNotifierItem Support (System Tray)
+      - 7048 # Rounded Window Corners Reborn
+      # - 4998 # Legacy (GTK3) Theme Scheme Auto Switcher (for adw-gtk3)
   # Configures Inbox apps that are shipped with the image
   - type: dnf
     install:
