@@ -14,3 +14,7 @@ gtk-theme="adw-gtk3"
 [org.gnome.desktop.wm.keybindings]
 switch-to-workspace-left=['<Control><Super>Left']
 switch-to-workspace-right=['<Control><Super>Right']
+
+# Search Providers
+[org.gnome.desktop.search-providers]
+enabled=['org.gnome.Calculator.desktop','io.github.kolunmi.Bazaar.desktop','org.gnome.clocks.desktop']
