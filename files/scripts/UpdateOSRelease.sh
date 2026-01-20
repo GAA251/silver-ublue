@@ -5,12 +5,16 @@ set -oue pipefail
 
 # Updates the os-release file to better reflect the image version
 OS_RELEASE_FILE="/usr/lib/os-release"
+NAME=$(grep '^NAME=' "$OS_RELEASE_FILE" | cut -d'=' -f2 | tr -d '"')
 VARIANT=$(grep '^VARIANT=' "$OS_RELEASE_FILE" | cut -d'=' -f2 | tr -d '"')
 VERSION_ID=$(grep '^VERSION_ID=' "$OS_RELEASE_FILE" | cut -d'=' -f2 | tr -d '"')
 OSTREE_VERSION=$(grep '^OSTREE_VERSION=' "$OS_RELEASE_FILE" | cut -d'=' -f2 | tr -d "'")
 
+# Set NAME to Fedora Linux
+NAME="Fedora Linux"
+sed -i.bak "s/^NAME=.*/NAME=\"$NAME\"/" "$OS_RELEASE_FILE"
 # Update PRETTY_NAME and add/edit IMAGE_VERSION
-sed -i.bak "s/^PRETTY_NAME=.*/PRETTY_NAME=\"Fedora Linux $VERSION_ID ($VARIANT)\"/" "$OS_RELEASE_FILE"
+sed -i.bak "s/^PRETTY_NAME=.*/PRETTY_NAME=\"$NAME $VERSION_ID ($VARIANT)\"/" "$OS_RELEASE_FILE"
 # Add IMAGE_VERSION if it doesn't exist, or update it if it does
 if grep -q '^IMAGE_VERSION=' "$OS_RELEASE_FILE"; then
   sed -i "s/^IMAGE_VERSION=.*/IMAGE_VERSION=\"$OSTREE_VERSION\"/" "$OS_RELEASE_FILE"
