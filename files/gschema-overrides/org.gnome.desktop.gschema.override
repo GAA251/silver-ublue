@@ -9,3 +9,8 @@ numlock-state=true
 # Libadwaita theme for gtk3 apps
 [org.gnome.desktop.interface]
 gtk-theme="adw-gtk3"
+
+# Keyboard shortcuts
+[org.gnome.desktop.wm.keybindings]
+switch-to-workspace-left=['<Control><Super>Left']
+switch-to-workspace-right=['<Control><Super>Right']
