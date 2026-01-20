@@ -73,6 +73,11 @@ modules:
       - EnableZapret.sh
   # Configures GNOME with gschema overrides @ files/gschema-overrides/*
   - type: gschema-overrides
+  # Configures GNOME with these extensions
+  - type: gnome-extensions
+    install:
+      - 2236 # Night Theme Switcher
+      - 615 # AppIndicator and KStatusNotifierItem Support (System Tray)
   # Configures Inbox apps that are shipped with the image
   - type: dnf
     install:
