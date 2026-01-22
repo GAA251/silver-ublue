@@ -97,6 +97,7 @@ modules:
         - gnome-tour
         - yelp
         - gnome-software # Replaces GNOME Software in favor of Bazaar
+        - gnome-software-rpm-ostree
         - dconf-editor # (GSchema Overrides)
   - type: default-flatpaks
     configurations:
