@@ -2,7 +2,7 @@
 
 A custom Fedora Silverblue Image with the following:
 - UUPD for automatic updates and Bazaar in place of gnome-software
-- NVIDIA-open drivers built-in
+- Proprietary NVIDIA drivers built-in because nvidia-open is very very broken
 - DNS-over-TLS enabled by default
 - zapret to bypass DPI inspection (**this is very niche software and its probably not needed for *almost* anyone!**)
 - A few gnome extensions (Night Theme Switcher, AppIndicator and KStatusNotifierItem Support, Rounded Window Corners Reborn)
