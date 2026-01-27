@@ -69,9 +69,6 @@ modules:
     files:
       - source: zapret
         destination: /etc/zapret
-  - type: script
-    scripts:
-      - EnableZapret.sh
   # Configures GNOME with gschema overrides @ files/gschema-overrides/*
   # and extensions
   - type: gnome-extensions
@@ -86,7 +83,6 @@ modules:
     install:
       packages:
         - fastfetch
-        - gnome-firmware # GNOME Firmware Manager
         - adw-gtk3-theme # Libadwaita theme for gtk3 apps
     remove:
       packages:
@@ -127,6 +123,7 @@ modules:
           - org.gnome.baobab # Disk Usage Analyzer
           - org.gnome.clocks
           #- org.gnome.font-viewer
+          - org.gnome.Firmware
           - org.gtk.Gtk3theme.adw-gtk3 # Libadwaita theme for gtk3 apps
           - org.gtk.Gtk3theme.adw-gtk3-dark # Libadwaita theme for gtk3 apps
   # Runs a "Prepare for First Use" script before the image is packaged and signed.
