@@ -26,14 +26,10 @@ modules:
     remove:
       packages:
         - ublue-os-update-services
-  - type: files
-    files:
-      - source: uupd
-        destination: /etc/uupd
   - type: script
     scripts:
       - EnableUUPD.sh
-  # Integrates NVIDIA-OPEN Drivers
+  # Integrates NVIDIA Drivers
   - type: akmods
     base: main
     install: [] # This is required but we don't want anything other than NVIDIA but that uses nvidia-driver
