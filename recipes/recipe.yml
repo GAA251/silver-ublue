@@ -37,7 +37,7 @@ modules:
   - type: dnf
     install:
       packages:
-        libva-nvidia-driver
+        - libva-nvidia-driver
     remove:
       packages:
         - nvidia-settings # NVIDIA X Server Settings (X11 is not available in GNOME so we don't need it)
