@@ -122,6 +122,7 @@ modules:
           - org.gnome.baobab # Disk Usage Analyzer
           - org.gnome.clocks
           - org.gnome.Firmware
+          - org.gnome.Showtime # Video Player
           - org.gtk.Gtk3theme.adw-gtk3 # Libadwaita theme for gtk3 apps
           - org.gtk.Gtk3theme.adw-gtk3-dark # Libadwaita theme for gtk3 apps
 
