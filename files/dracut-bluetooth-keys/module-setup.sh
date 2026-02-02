@@ -12,5 +12,5 @@ depends() {
 }
 
 install() {
-  inst_hook pre-udev 50 "$moddir/bluetooth-keys.sh"
+  inst_hook pre-udev 50 "$moddir/bluetoothkeys.sh"
 }
