@@ -1,3 +1,8 @@
 [org.gnome.shell]
 disable-user-extensions=false
 enabled-extensions=['appindicatorsupport@rgcjonas.gmail.com','nightthemeswitcher@romainvigier.fr','rounded-window-corners@fxgn','in-picture@filiprund.cz']
+
+# Keyboard bindings
+# Some logitech keyboards map the screenshot button to Shift Windows S as its used by Windows
+[org.gnome.shell.keybindings]
+show-screenshot-ui=['<Shift><Super>s', 'Print']
