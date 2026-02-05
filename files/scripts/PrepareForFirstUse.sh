@@ -7,7 +7,7 @@ set -oue pipefail
 rm -f /etc/profile.d/toolbox.sh
 
 # Enables font stemming (https://blog.aktsbot.in/no-more-blurry-fonts.html)
-#echo 'FREETYPE_PROPERTIES="cff:no-stem-darkening=0 autofitter:no-stem-darkening=0"' >> /etc/environment
+echo 'FREETYPE_PROPERTIES="cff:no-stem-darkening=0 autofitter:no-stem-darkening=0"' >> /etc/environment
 
 # DUMMY FIX for anything weird that might happen in the future
 #current_date=$(date +%Y%m%d)
